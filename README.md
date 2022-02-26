@@ -7,4 +7,4 @@ Additional Improvements Made:
 
 - Scanning can be done by selecting the file type.
 - Optionally, only the test folder or all folders can be scanned.
--The file can be copied one by one or all at once.
+- The file can be copied one by one or all at once.
