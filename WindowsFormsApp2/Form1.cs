@@ -22,13 +22,12 @@ namespace WindowsFormsApp2
         public Form1()
         {
             InitializeComponent();
-            
         }
-        #region PDF Listeme
+        #region Dokuman Listeme
         private string[] dirs;
         private string[] files;
         private System.IO.FileInfo file;
-        private void GetDocument(string path, ref List<string> listPDF)
+        private void GetDocument(string path, ref List<string> listDocument)
         {
             string uzanti = comboBox1.SelectedItem.ToString();
             try
@@ -36,7 +35,7 @@ namespace WindowsFormsApp2
                 dirs = System.IO.Directory.GetDirectories(path);
                 foreach (string item in dirs)
                 {
-                    GetDocument(item, ref listPDF);
+                    GetDocument(item, ref listDocument);
                 }
                 files = System.IO.Directory.GetFiles(path);
                 foreach (string item in files)
@@ -46,14 +45,14 @@ namespace WindowsFormsApp2
                     {
                         if (file.DirectoryName.ToLower().EndsWith("test") && file.Extension.ToLower() == uzanti)
                         {
-                            listPDF.Add(file.FullName);
+                            listDocument.Add(file.FullName);
                         }
                     }
                     else
                     {
                         if (file.Extension.ToLower() == uzanti)
                         {
-                            listPDF.Add(file.FullName);
+                            listDocument.Add(file.FullName);
                         }
                     }
                 }
@@ -69,10 +68,10 @@ namespace WindowsFormsApp2
             {
                 listBox1.Items.Clear();
                 string dialog = txtKaynak.Text;
-                List<string> listPDF = new List<string>();
-                GetDocument(dialog, ref listPDF);
-                listPDF.Sort();
-                foreach (string filePath in listPDF)
+                List<string> listDocument = new List<string>();
+                GetDocument(dialog, ref listDocument);
+                listDocument.Sort();
+                foreach (string filePath in listDocument)
                 {
                     listBox1.Items.Add(filePath);
                 }
